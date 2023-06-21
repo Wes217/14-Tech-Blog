@@ -1,16 +1,14 @@
 {
-  "name": "14-tech-blog",
+  "name": "crowd-funding",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "seed": "node seeds/seed.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Wes217/14-Tech-Blog.git"
-  },
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -23,8 +21,9 @@
     "mysql2": "^2.2.5",
     "sequelize": "^6.3.5"
   },
-  "bugs": {
-    "url": "https://github.com/Wes217/14-Tech-Blog/issues"
-  },
-  "homepage": "https://github.com/Wes217/14-Tech-Blog#readme"
+  "devDependencies": {
+    "eslint": "^7.12.1",
+    "eslint-config-prettier": "^6.15.0",
+    "prettier": "^2.1.2"
+  }
 }
