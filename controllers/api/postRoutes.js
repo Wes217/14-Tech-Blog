@@ -2,6 +2,18 @@ const router = require('express').Router();
 const { Post } = require('../../models');
 const withAuth = require('../../utils/auth');
 
+router.get('/', async  (req,res) =>{
+  try{
+    const postData = await Post.findAll({})
+    const posts = postData.map((post) => post.get({ plain: true }));
+
+    res.status(200).json(posts)
+  } catch (err){
+    res.status(500).json(err)
+  }
+ })
+
+
 router.post('/', withAuth, async (req, res) => {
   try {
     const newPost = await Post.create({
@@ -17,15 +29,19 @@ router.post('/', withAuth, async (req, res) => {
 
 router.put('/:id',withAuth, async (req,res)=>{
   try{
-    const updatedPost = await Post.put(req.body, {
+    const updatedPost = await Post.update(req.body, {
       where: {
         id: req.params.id,
         user_id: req.session.user_id,
       },
     })
+    if(!updatedPost[0]) {
+      res.status(404).json({ message: 'No Post with this ID!'})
+    }
+
     res.status(200).json(updatedPost)
   }catch (err) {
-    res.status(200).json(err)
+    res.status(500).json(err)
   }
 })
 
