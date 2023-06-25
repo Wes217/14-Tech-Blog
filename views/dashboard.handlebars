@@ -24,15 +24,16 @@
   </div>
 
   {{#if posts.length}}
-  <div class="col-md-6 project-list">
+  <div class="col-md-6 post-list">
     <h3>Posts:</h3>
 
     {{#each posts as |post|}}
     <div class="row mb-2">
       <div class="col-md-8">
-        <h4><a href="profile/edit/{{post.id}}">{{post.title}}</a></h4>
+        <h4><a href="post/{{post.id}}">{{post.title}}</a></h4>
       </div>
       <div class="col-md-4">
+        <button onclick="window.location.href='dashboard/edit/{{post.id}}';">Update</button>
         <button class="btn btn-sm btn-danger" data-id="{{post.id}}">DELETE</button>
       </div>
     </div>
@@ -41,4 +42,4 @@
   {{/if}}
 </div>
 
-<script src="./js/profile.js"></script>
+<script src="./js/dashboard.js"></script>
